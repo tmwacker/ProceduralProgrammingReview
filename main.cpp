@@ -12,12 +12,12 @@ char playerChoice() {
     while (true) {
         cout << "Type r for Rock, p for Paper, or s for Scissors. Type q to end game: ";
         cin >> player;
-        player = tolower(player); // Convert input to lowercase for consistency
+        player = tolower(player); 
 
         if (player == 'r' || player == 'p' || player == 's' || player == 'q') {
-            return player; // Valid input, return choice
+            return player; 
         }
-        cout << "Invalid input. Please enter r, p, s, or q.\n"; // Error message
+        cout << "Invalid input. Please enter r, p, s, or q.\n"; 
     }
 }
 
