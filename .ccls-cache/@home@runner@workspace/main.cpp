@@ -16,11 +16,11 @@ int main() {
     string names[MAXSTUDENTS];
     double scores[MAXSTUDENTS][MAXTESTS];
     double averages[MAXSTUDENTS];
-    int testCounts[MAXSTUDENTS] = {0}; 
+    int testCounts[MAXSTUDENTS] = {0};
 
-    int numStudents = readfile(names, scores, testCounts); // Read file & get student count
-    calcavg(scores, averages, testCounts, numStudents); // Calculate averages
-    printReport(names, averages, numStudents); // Display results
+    int numStudents = readfile(names, scores, testCounts);
+    calcavg(scores, averages, testCounts, numStudents);
+    printReport(names, averages, numStudents);
 
     return 0;
 }
