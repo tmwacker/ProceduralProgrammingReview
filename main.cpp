@@ -32,15 +32,24 @@ int readfile(string names[], double scores[][MAXTESTS], int testCounts[]) {
         return 0;
     }
 
+    string line;
     int numStudents = 0;
-    while (numStudents < MAXSTUDENTS && studentFile >> names[numStudents]) {
-        int testCount = 0;
-        while (testCount < MAXTESTS && studentFile >> scores[numStudents][testCount]) {
-            testCount++;
+    
+    while (getline(studentFile, line) && numStudents < MAXSTUDENTS) {
+        istringstream iss(line);
+        
+        if (iss >> names[numStudents]) {
+            int testCount = 0;
+            double score;
+            while (testCount < MAXTESTS && iss >> score) {
+                scores[numStudents][testCount] = score;
+                testCount++;
+            }
+            testCounts[numStudents] = testCount;
+            numStudents++;
         }
-        testCounts[numStudents] = testCount; 
-        numStudents++;
-    }  
+    }
+    
     studentFile.close();
     return numStudents;
 }
