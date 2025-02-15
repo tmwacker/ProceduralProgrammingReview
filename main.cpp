@@ -4,16 +4,18 @@
 #include <iomanip>
 using namespace std;
 
+//global variables
 const int MAXSTUDENTS = 100;
 const int MAXTESTS = 10;
 
+//function prototypes
 int readfile(string names[], double scores[][MAXTESTS], int testCounts[]); // Reads file & tracks test count
 void calcavg(double scores[][MAXTESTS], double averages[], int testCounts[], int numStudents); // Averages test scores
 char convertLetter(double average); // Converts scores into letter grades
 void printReport(string names[], double averages[], int numStudents); // Displays results
 
 int main() {
-    string names[MAXSTUDENTS];
+    string names[MAXSTUDENTS]; //initiallizing arrays
     double scores[MAXSTUDENTS][MAXTESTS];
     double averages[MAXSTUDENTS];
     int testCounts[MAXSTUDENTS] = {0};
@@ -28,11 +30,7 @@ int main() {
 int readfile(string names[], double scores[][MAXTESTS], int testCounts[]) {
     ifstream studentFile("StudentGrades.txt");
     if (!studentFile) {
-        cerr << "Error opening file." << endl;
-        return 0;
-    }
-
-    string line;
+        string line;
     int numStudents = 0;
     
     while (getline(studentFile, line) && numStudents < MAXSTUDENTS) {
@@ -73,14 +71,10 @@ char convertLetter(double average) {
 }
 
 void printReport(string names[], double averages[], int numStudents) {
-    cout << "\nStudent Report\n";
-    cout << "-----------------------------------------\n";
     cout << left << setw(20) << "Name" << setw(10) << "Average" << "Grade\n";
-    cout << "-----------------------------------------\n";
-
     for (int i = 0; i < numStudents; i++) {
-        cout << left << setw(20) << names[i]    // Name aligned to 20 spaces
-             << fixed << setprecision(2) << setw(10) << averages[i]  // Average aligned to 10 spaces
-             << convertLetter(averages[i]) << endl; // Grade printed normally
+        cout << left << setw(20) << names[i]    //Makes report readable
+             << fixed << setprecision(2) << setw(10) << averages[i]  
+             << convertLetter(averages[i]) << endl; 
     }
 }
