@@ -1,3 +1,5 @@
+// Programmer: Timothy Wacker
+// This program takes a file, reads it, and provides students' average grades from tests.
 
 #include <fstream>
 #include <iostream>
@@ -36,7 +38,7 @@ int readfile(string names[], double scores[][MAXTESTS], int testCounts[]) {
         return 0;
     }
     
-    string line;
+    string line; // File was only reading first line only, assistant added this and it worked. Not sure exactly why
     int numStudents = 0;
     
     while (getline(studentFile, line) && numStudents < MAXSTUDENTS) {
