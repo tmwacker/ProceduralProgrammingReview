@@ -13,10 +13,10 @@ const int MAXSTUDENTS = 100;
 const int MAXTESTS = 10;
 
 //function prototypes
-int readfile(string names[], double scores[][MAXTESTS], int testCounts[]); 
-void calcavg(double scores[][MAXTESTS], double averages[], int testCounts[], int numStudents);
-char convertLetter(double average);
-void printReport(string names[], double averages[], int numStudents);
+int readfile(string names[], double scores[][MAXTESTS], int testCounts[]); //Reads file and puts into parallel arrays
+void calcavg(double scores[][MAXTESTS], double averages[], int testCounts[], int numStudents); //takes students grades and averages them.
+char convertLetter(double average); //takes number and turns into a letter grade
+void printReport(string names[], double averages[], int numStudents); //displays a formatted result 
 
 int main() {
     string names[MAXSTUDENTS];
@@ -34,7 +34,7 @@ int main() {
 int readfile(string names[], double scores[][MAXTESTS], int testCounts[]) {
     ifstream studentFile("StudentGrades.txt");
     if (!studentFile) {
-        cout << "Error opening file" << endl;
+        cout << "Error opening file" << endl; // error check
         return 0;
     }
     
@@ -56,7 +56,7 @@ int readfile(string names[], double scores[][MAXTESTS], int testCounts[]) {
         }
     }
     
-    studentFile.close();
+    studentFile.close(); //closes file
     return numStudents;
 }
 
@@ -79,7 +79,7 @@ char convertLetter(double average) {
 }
 
 void printReport(string names[], double averages[], int numStudents) {
-    cout << left << setw(20) << "Name" << setw(10) << "Average" << "Grade\n";
+    cout << left << setw(20) << "Name" << setw(10) << "Average" << "Grade\n"; //formats names, averages, and grades
     for (int i = 0; i < numStudents; i++) {
         cout << left << setw(20) << names[i]
              << fixed << setprecision(2) << setw(10) << averages[i]
